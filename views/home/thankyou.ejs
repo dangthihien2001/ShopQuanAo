@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<%- include("layouts/header"); -%>
+    <body>
+            <main>
+                <div class="main">
+                    <div class="header-order">
+                        <!--            begin nav-->
+                        <ul class="nav-order">
+                            <li><a href="/">home page / </a></li>
+                            <li><a href="#"> Order Success</a></li>
+                        </ul>
+                        <!--            end nav-->
+                    </div>
+                    <div class="row row-header-order">
+                         <div class="col-3"></div>
+                        <div class="col-6 members-item-order">
+                            <h2 class="section-heading"><i class="fa fa-check-circle-o" aria-hidden="true" style="color: lawngreen"></i> ORDER SUCCESS</h2>
+                            <p class="section-sub-heading" style="color: red"><i>Thank you for ordering from our shop</i></p>
+                            <p class="about-text">
+                                We are pleased to announce that your order has been received.
+                                We will notify you when the order is delivered. Thank you for your purchase, have a nice day.
+                                Please contact: 029480248 if there is a problem.see you again!
+                            </p>
+                            <button class="home-page"><a href="/">Home Page</a></button>
+                        </div>
+                        <div class="col-3"></div>
+                    </div>
+                </div>
+            </main>
+            <%- include("layouts/script"); -%>
+            <script type="text/javascript">
+                localStorage.removeItem('cart');  //loại bỏ khóa với giá trị của nó
+            </script>
+    </body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+<%- include("../layouts/header"); -%>
+  <link rel="stylesheet" href="/assets/home/css/personal-infor.css" />
+
+  <body>
+    <%- include("../layouts/navbar"); -%>
+
+      <main>
+        <!-- breadcrumb area start -->
+        <div class="breadcrumb-area-3 pt-215 pb-20">
+          <div class="container">
+            <div class="row">
+              <div class="col-xxl-12">
+                <div class="breadcrumb-wrapper-2 text-center">
+                  <h5>Personal Infomation</h5>
+                  <h2 class="username">
+                    <%= user.userName %>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- breadcrumb area end -->
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <div class="row justify-content-end">
+                <div type="button" class="col-2 btn btn-outline-primary" data-bs-toggle="modal"
+                  data-bs-target="#changeProfile" id="open-modal-changeUser">
+                  Edit profile
+                </div>
+
+                <!-- Modal Change Profile -->
+                <div class="modal fade" id="changeProfile" tabindex="-1" aria-labelledby="changeProfileLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="basic-login">
+                          <h3 class="text-center mb-60">Change Profile</h3>
+                          <form action="/user/personal" method="PUT" id="edit-user-form">
+                            <div class="row">
+                              <div class="col-6">
+                                <label for="username">Username</label>
+                                <input id="username" name="username" type="text" placeholder="User Name..."
+                                  value="<%= user.userName %>" />
+                                <span class="username-message message-error mb-60"></span>
+                              </div>
+                              <div class="col-6">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input id="phoneNumber" name="phoneNumber" type="text" placeholder="Phone Number..."
+                                  value="<%= user.phoneNumber %>" />
+                                <span class="phoneNumber-message message-error mb-60"></span>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                          Close
+                        </button>
+                        <button type="button" class="btn btn-primary ml-20 mr-20" id="save-user">
+                          Save changes
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <h5 class="user-personal-title">Personal Information</h5>
+                <table class="table" id="table-information">
+                  <tbody>
+                    <tr>
+                      <td class="item-label">Full Name</td>
+                      <td class="item-value item-userName">
+                        <%= user.userName%>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="item-label">Phone Number</td>
+                      <td class="item-value item-phoneNumber">
+                        <%= user.phoneNumber%>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="item-label">Email</td>
+                      <td class="item-value">
+                        <%= account.email%>
+                      </td>
+                      <td class="item-icon">
+                        <i class="fa-thin fa-lock-keyhole"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="item-label">Address</td>
+                      <td class="item-value item-address">Hà Nội</td>
+                    </tr>
+                    <tr>
+                      <td class="item-label">Password</td>
+                      <td class="item-value">********</td>
+                      <td class="item-icon">
+                        <div type="button" data-bs-toggle="modal" data-bs-target="#changePassword"
+                          id="open-modal-changePassword">
+                          <i class="fa-thin fa-pen-to-square"></i>
+                        </div>
+
+                        <!-- Modal Change Password -->
+                        <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="changePasswordLabel"
+                          aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                  aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="basic-login">
+                                  <h3 class="text-center mb-60"> Change Password </h3>
+                                  <form action="/auth/changePassword" method="PUT" id="edit-account-form">
+                                    <div class="row">
+                                      <div class="col-12">
+                                        <label for="password"> Current password </label>
+                                        <input id="password" name="password" type="password"
+                                          placeholder="Current Password ..." />
+                                        <span class="password-message message-error mb-60"></span>
+                                      </div>
+                                      <div class="col-12">
+                                        <label for="newPassword"> New Password </label>
+                                        <input id="newPassword" name="newPassword" type="password"
+                                          placeholder="New Password ..." />
+                                        <span class="newPassword-message message-error mb-60"></span>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                  Close
+                                </button>
+                                <button type="button" class="btn btn-primary ml-20 mr-20" id="save-account">
+                                  Save changes
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- footer area start -->
+      <%- include("../layouts/footer"); -%>
+        <!-- footer area end -->
+        <%- include("../layouts/script"); -%>
+          <script src="/assets/home/js/auth/ajax-form-changePassword.js"></script>
+  </body>
+
+</html>

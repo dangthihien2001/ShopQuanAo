@@ -1,0 +1,63 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<%- include("layouts/header"); -%>
+
+    <body>
+        <main>
+
+            <%- include("layouts/navbar"); -%>
+            <!-- The Contact Section -->
+            <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+                <div class="w3-row w3-padding-32">
+                    <div class="w3-col m6 w3-large w3-margin-bottom">
+                        <i class="fa fa-map-marker" style="width:30px"></i> HaNoi, VietNam<br>
+                        <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
+                        <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
+                    </div>
+                    <div class="w3-col m6">
+                        <form action="/action_page.php" target="_blank">
+                            <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                <div class="w3-half">
+                                    <input class="w3-input w3-border" type="text" placeholder="Name" required
+                                        name="Name">
+                                </div>
+                                <div class="w3-half">
+                                    <input class="w3-input w3-border" type="text" placeholder="Email" required
+                                        name="Email">
+                                </div>
+                            </div>
+                            <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+                            <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- breadcrumb area start -->
+            <div class="breadcrumb-area-3 pt-215 pb-20" data-background="assets/home/img/contact/contact1.png">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xxl-12">
+                            <div class="breadcrumb-wrapper-2 text-center">
+                                <h3>Contact</h3>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb justify-content-center">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- breadcrumb area end -->
+
+            <!-- End Page Content -->
+            </div>
+        </main>
+        <%- include("layouts/script"); -%>
+            <%- include("layouts/footer"); -%>
+    </body>
+
+</html>

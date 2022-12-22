@@ -1,0 +1,38 @@
+
+.header-order{
+    background-color: lightgray;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 46px;
+}
+.nav-order li{
+    list-style-type: none;
+    float: left;
+}
+.nav-order li a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+.section-heading{
+    color: lawngreen;
+}
+.row-header-order{
+    margin-top: 100px;
+}
+.members-item-order{
+    box-shadow: 5px 5px 5px 10px darkseagreen;
+    border: 1px gray solid;
+}
+.home-page{
+    background-color: red;
+    margin-left: 43%;
+    margin-bottom: 50px;
+}
+.home-page:hover{
+    background-color: yellowgreen;
+}
+.section-heading , .section-sub-heading,about-text{
+    text-align: center;
+}

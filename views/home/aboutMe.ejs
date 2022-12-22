@@ -1,0 +1,182 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<%- include("layouts/header"); -%>
+
+    <body>
+        <%- include("layouts/navbar"); -%>
+            <main>
+                <!-- breadcrumb area start -->
+                <div class="breadcrumb-area-3 pt-215 pb-20">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xxl-12">
+                                <div class="breadcrumb-wrapper-2 text-center">
+                                    <h3>About Me</h3>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb justify-content-center">
+                                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">About Me</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- breadcrumb area end -->
+
+                <!-- Image header -->
+                <header class="w3-display-container w3-wide" id="home">
+                    <img class="w3-image" src="/assets/uploads/fashion2.png" alt="Fashion Blog" width="1600"
+                        height="1060">
+                    <div class="w3-display-left w3-padding-large">
+                        <h1 class="w3-jumbo w3-text-white w3-hide-small"><b>FASHION BLOG</b></h1>
+                        <h6><button class="w3-button w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off"
+                                onclick="document.getElementById('subscribe').style.display='block'">SUBSCRIBE</button>
+                        </h6>
+                    </div>
+                </header>
+
+                <!-- Container (About Section) -->
+                <div class="w3-content w3-container w3-padding-64" id="about">
+                    <h3 class="w3-center">ABOUT ME</h3>
+                    <p class="w3-center"><em style="color : black">I love fashion</em></p>
+                    <p style="color : black">We have created a fictional "personal" website/blog, and our fictional
+                        character is a hobby photographer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                        do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                        qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <div class="w3-row">
+                        <div class="w3-col m6 w3-center w3-padding-large">
+                            <p><b style="color : black"><i class="fa fa-user w3-margin-right"></i>My Name</b></p><br>
+                            <img src="/assets/uploads/fashion.jpg" alt="Photo of Me" width="500" height="333">
+                        </div>
+
+                        <!-- Hide this text on small devices --><br>
+                        <div class="w3-col m6 w3-hide-small w3-padding-large">
+                            <p style="color : black">Welcome to my website. I am lorem ipsum consectetur adipiscing
+                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                    </div>
+                    <!--het body-->
+
+            </main>
+            <!-- footer area start -->
+            <%- include("layouts/footer"); -%>
+                <!-- footer area end -->
+                <%- include("layouts/script"); -%>
+                    <script type="text/javascript">
+                        let currentPage;
+                        let totalPages;
+                        $(document).ready(function () {
+                            selectPage(1);
+                        })
+
+                        function prevPage() {
+                            if (currentPage > 1) {
+                                currentPage--;
+                                selectPage(currentPage)
+                            }
+                        }
+
+                        function selectPage(page) {
+                            $.ajax({
+                                type: "GET",
+                                url: location.protocol + '//' + location.host + `/api/ordersByUser/${page}`,
+                                contentType: 'json',
+                                dataType: "json",
+                            })
+                                .done(function (response) {
+                                    let content = "";
+                                    let myDate;
+                                    let buttonStatus;
+                                    let status;
+                                    response.orders.forEach(item => {
+                                        myDate = new Date(item.createdAt);
+                                        myDate = myDate.toLocaleString("vi-VN").split(',')[1];
+                                        if (item.status == "0") {
+                                            status = "<span style=\"color: rgb(255, 0, 0);\">Cancelled</span>";
+                                            buttonStatus = "";
+                                        }
+                                        else if (item.status == "1") {
+                                            status = "<span style=\"color: #ffbe76;\">Pending</span>";
+                                            buttonStatus = `<a class="btn btn-info btn-payment-order mr-5" href="/payment/${item._id}" role="button" style="color: white;">Payment</a>` +
+                                                '<a class="btn btn-danger btn-cancel-order" href="javascript:void(0)" role="button">Cancel Order</a>';
+                                        }
+                                        else {
+                                            status = "<span style=\"color: #badc58;\">Complete</span>";
+                                            buttonStatus = "";
+                                        }
+                                        content += '' +
+                                            '<tr>' +
+                                            `                                                <td class="order-id-val">#${item._id}</td>` +
+                                            `                                                <td class="order-date-val"><span>${myDate}</span></td>` +
+                                            '                                                <td class="order-amount-val">' +
+                                            `                                                    <span>$${item.total_money}</span>` +
+                                            '                                                </td>' +
+                                            `                                                <td class="order-status-val">${status}</td>` +
+                                            '                                                <td class="order-action-btn">' +
+                                            `${buttonStatus}` +
+                                            '                                                </td>' +
+                                            '                                            </tr>' +
+                                            '';
+                                    })
+                                    pagination(response)
+                                    $(".table-content.table-responsive tbody").html(content);
+                                })
+                                .fail(function (response) {
+
+                                })
+
+                            function nextPage() {
+                                if (currentPage < totalPages) {
+                                    currentPage++;
+                                    selectPage(currentPage)
+                                }
+                            }
+
+                            function pagination(response) {
+                                let data = "";
+                                if (response.currentPage > 1) {
+                                    data += '' +
+                                        '<li>' +
+                                        '                                                        <a href="javascript:void(0);" onclick="prevPage()">' +
+                                        '                                                            <i class="far fa-angle-left"></i>' +
+                                        '                                                        </a>' +
+                                        '                                                    </li>' +
+                                        '';
+                                }
+                                for (let i = 0; i < response.totalPages; i++) {
+                                    data += '' +
+                                        '<li>' +
+                                        '                                                        <a href="javascript:void(0);" onclick="selectPage(\'' + (i + 1) + "')\"' >" + (i + 1) + "</a>" +
+                                        '                                                    </li>' +
+                                        '';
+                                }
+                                if (response.currentPage != response.totalPages && response.totalPages > 0) {
+                                    data += '' +
+                                        '<li>' +
+                                        '                                                        <a href="javascript:void(0);" onclick="nextPage()">' +
+                                        '                                                            <i class="far fa-angle-right"></i>' +
+                                        '                                                        </a>' +
+                                        '                                                    </li>' +
+                                        '';
+                                }
+                                $(".basic-pagination nav ul").html(data);
+                            }
+                        }
+                    </script>
+    </body>
+</html>
+                    

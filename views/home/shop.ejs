@@ -1,0 +1,600 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<%- include("layouts/header"); -%>
+
+    <body>
+        <%- include("layouts/navbar"); -%>
+            <main>
+                <!-- breadcrumb area start -->
+                <div class="breadcrumb-area pt-255 pb-265 mb-120"
+                    data-background="assets/home/img/banner/breadcrumb.jpg">
+                    <div class="container">
+                        <div class="breadcrumb-title text-center">
+                            <h2>Shop</h2>
+                        </div>
+                        <div class="breadcrumb-list">
+                            <a href="/index">Home</a>
+                            <a href="/shop">Shop</a>
+                            <span>Shop Sidebar</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- breadcrumb area end -->
+
+                <!-- shop area start -->
+                <div class="shop-area mb-70">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xxl-3 col-xl-3 col-lg-4">
+                                <div class="shop-sidebar-area pt-7 pr-60">
+                                    <div class="single-widget pb-50 mb-50">
+                                        <h4 class="widget-title">Product Categories</h4>
+                                        <div class="widget-category-list">
+                                            <form action="#">
+                                                <% for(let i=0; i < category.length; i++) { %>
+                                                    <div class="single-widget-category">
+                                                        <input type="checkbox" id="cat-item-1" name="cat-item">
+                                                        <label for="cat-item-1">
+                                                            <%= category[i].nameCategory %> 
+                                                            <!-- <span>(<%=category.length %>)</span> -->
+                                                        </label>
+                                                    </div>
+                                                    <% } %>
+                                            </form>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- để đây  -->
+                                    <div class="single-widget pb-50 mb-50">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- view showwing default -->
+                            <div class="col-xxl-9 col-xl-9 col-lg-8 order-first order-lg-last">
+                                <div class="shop-top-area mb-40">
+                                    <div class="row">
+                                        <div class="col-xxl-4 col-xl-2 col-md-3 col-sm-3">
+                                            <div class="shop-top-left">
+                                                <span class="label mr-15">View:</span>
+                                                <div class="nav d-inline-block tab-btn-group" id="nav-tab"
+                                                    role="tablist">
+                                                    <button class="active" data-bs-toggle="tab" data-bs-target="#tab1"
+                                                        type="button"><i class="fas fa-border-none"></i></button>
+                                                    <button data-bs-toggle="tab" data-bs-target="#tab2" type="button"><i
+                                                            class="fas fa-list"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-4 col-xl-6 col-md-6 col-sm-6">
+                                            <p class="show-total-result text-sm-center">Showing 1–12 of 24 results</p>
+                                        </div>
+                                        <div class="col-xl-4 col-xl-4 col-md-3 col-sm-3">
+                                            <div class="text-sm-end">
+                                                <div class="select-default">
+                                                    <select name="short" id="short" class="shorting-select">
+                                                        <option value="">Default sorting</option>
+                                                        <option value="">ASC</option>
+                                                        <option value="">DEC</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- /. shop top area -->
+                                <div class="shop-main-area">
+                                    <div class="tab-content" id="nav-tabContent">
+                                        <div class="tab-pane fade  show active" id="tab1">
+                                            <div class="row pb-20">
+                                                <% for(let i=0; i < products.length; i++) { %>
+                                                    <!-- col -->
+                                                    <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                                                        <div class="single-product mb-15 wow fadeInUp"
+                                                            data-wow-delay=".1s">
+                                                            <div class="product-thumb">
+                                                                <img src="/assets/uploads/<%= products[i].productImage %>"
+                                                                    alt="#">
+                                                                <img src="/assets/uploads/<%= products[i].productImage %>"
+                                                                    alt="#">
+                                                                <div class="cart-btn cart-btn-1 p-abs">
+                                                                    <a href="#">Add to cart</a>
+                                                                </div>
+                                                                <span class="discount discount-1 p-abs">-20%</span>
+                                                                <div class="product-action product-action-1 p-abs">
+                                                                    <a href="#" data-bs-toggle="modal"
+                                                                        data-bs-target="#productModal"
+                                                                        class="icon-box icon-box-1">
+                                                                        <i class="fal fa-eye"></i>
+                                                                        <i class="fal fa-eye"></i>
+                                                                    </a>
+                                                                    <a href="#" class="icon-box icon-box-1">
+                                                                        <i class="fal fa-heart"></i>
+                                                                        <i class="fal fa-heart"></i>
+                                                                    </a>
+                                                                    <a href="#" class="icon-box icon-box-1">
+                                                                        <i class="fal fa-layer-group"></i>
+                                                                        <i class="fal fa-layer-group"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="product-content">
+                                                                <h4 class="pro-title pro-title-1"><a
+                                                                        href="javascript:void(0)">
+                                                                        <%= products[i].nameProduct%>
+                                                                    </a></h4>
+                                                                <div class="pro-price">
+                                                                    <span>$<%= products[i].prices%></span>
+                                                                    <p>stock: <%= products[i].stock%>
+
+                                                                </div>
+                                                                <div class="rating">
+                                                                    <i class="fal fa-star active"></i>
+                                                                    <i class="fal fa-star active"></i>
+                                                                    <i class="fal fa-star active"></i>
+                                                                    <i class="fal fa-star"></i>
+                                                                    <i class="fal fa-star"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end col -->
+                                                    <%} %>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- = -->
+                                        <div class="tab-pane fade" id="tab2">
+                                            <div class="product-wrap">
+                                                <% for(let i=0; i < products.length; i++) { %>
+                                                    <!-- bắt đầu 1 product -->
+                                                    <div class="single-product mb-30 puik-list-product-wrap">
+                                                        <div class="row align-items-xl-center">
+                                                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+                                                                <div class="product-thumb mr-30 product-thumb-list">
+                                                                    <img src="/assets/uploads/<%= products[i].productImage %>"
+                                                                        alt="#">
+                                                                    <img src="/assets/uploads/<%= products[i].productImage %>"
+                                                                        alt="#">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8">
+                                                                <div
+                                                                    class="puik-product-content puik-product-list-content">
+                                                                    <h4 class="pro-title pro-title-1  "><a
+                                                                            href="product-details.html">
+                                                                            <%= products[i].nameProduct%>
+                                                                        </a></h4>
+                                                                    <div class="pro-price  ">
+                                                                        <span>$<%= products[i].prices%></span>
+                                                                        <p>stock: <%= products[i].stock%>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="rating">
+                                                                        <i class="fal fa-star active"></i>
+                                                                        <i class="fal fa-star active"></i>
+                                                                        <i class="fal fa-star"></i>
+                                                                        <i class="fal fa-star"></i>
+                                                                        <i class="fal fa-star"></i>
+                                                                    </div>
+                                                                    <p>Claritas est etiam processus A Capitalize on low
+                                                                        hanging fruit to identify a ballpark value added
+                                                                        activity to
+                                                                        beta test. Override the digital divide with
+                                                                        additional clickthroughs from DevOps. Typi non
+                                                                        habent claritatem
+                                                                        insitam, est usus legentis in iis qui facit
+                                                                        eorum [...]</p>
+                                                                    <div class="puik-shop-product-actions">
+                                                                        <a href="#" class="puik-cart-btn">Add to
+                                                                            cart</a>
+                                                                        <a href="#" class="puik-proudct-btn-boxed"><i
+                                                                                class="fal fa-heart"></i></a>
+                                                                        <a href="#" class="puik-proudct-btn-boxed"><i
+                                                                                class="fal fa-layer-group"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- ket thuc 1 product -->
+                                                    <% } %>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="shop-pagination">
+                                    <div class="basic-pagination">
+                                        <nav>
+                                            <ul>
+                                                <li>
+                                                    <a href="/shop">
+                                                        <i class="far fa-angle-left"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop">1</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop" class="active">2</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop">3</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop">
+                                                        <i class="far fa-angle-right"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <!-- /. shop main area -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- shop area end -->
+
+
+
+                <!-- category area start -->
+                <div class="category-area pb-75" id="category-area">
+                    <div class="pl-20 pr-20">
+                        <div class="row row-2">
+                            <div class="col-xxl-6 col-xl-6 col-md-6 col-12">
+                                <div class="single-category mb-20 p-rel wow fadeInUp" data-wow-delay=".1s">
+                                    <a href="/shop">
+                                        <div class="cat-thumb fix">
+                                            <img src="assets/home/img/products/category-1.jpg" alt="#">
+                                        </div>
+                                        <div class="cat-content p-abs bottom-left">
+                                            <h4 class="pb-15">T-Shirt 2021/22</h4>
+                                            <span class="cat-subtitle">
+                                                <%= countTShirt %> Products
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xxl-6 col-xl-6 col-md-6 col-12">
+                                <div class="row row-2">
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                        <a href="/shop">
+                                            <div class="single-category mb-20 p-rel wow fadeInUp" data-wow-delay=".3s">
+                                                <div class="cat-thumb fix">
+                                                    <img src="/assets/uploads/image-1650423322523.jpg" alt="#">
+                                                </div>
+                                                <div class="cat-content p-abs bottom-left">
+                                                    <h4 class="pb-15">Sweater</h4>
+                                                    <span class="cat-subtitle">
+                                                        <%= countSweater %> Products
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                        <a href="/shop">
+                                            <div class="single-category mb-20 p-rel wow fadeInUp" data-wow-delay=".6s">
+                                                <div class="cat-thumb fix">
+                                                    <img src="/assets/uploads/image-1650422760934.jpg" alt="#">
+                                                </div>
+                                                <div class="cat-content p-abs bottom-left">
+                                                    <h4 class="pb-15">Men's shirts 2021/22</h4>
+                                                    <span class="cat-subtitle">
+                                                        <%= countMenShirt %> Products
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-xxl-12">
+                                        <a href="/shop">
+                                            <div class="single-category mb-20 p-rel wow fadeInUp" data-wow-delay=".9s">
+                                                <div class="cat-thumb fix">
+                                                    <img src="assets/home/img/products/category-4.jpg" alt="#">
+                                                </div>
+                                                <div class="cat-content p-abs bottom-left">
+                                                    <h4 class="pb-15">Blazer Cotton SS/21</h4>
+                                                    <span class="cat-subtitle">28 Products</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- category area end -->
+
+
+                <!-- subscribe area start(not) -->
+                <div class="subscribe-area pb-100 gray-bg-2 pt-95">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xxl-12">
+                                <div class="section-title text-center">
+                                    <span class="p-subtitle">OUR NEWSLETTER</span>
+                                    <h3 class="p-title pb-15 mb-0">join our newsletter</h3>
+                                    <p class="p-desc  pb-15">Subscribe to the Puik Store mailing list to receive updates
+                                        on new
+                                        arrivals, special offers<br>
+                                        and other discount information.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-xxl-8 col-xl-8">
+                                <div class="subscribe-form text-center">
+                                    <form action="#">
+                                        <input type="text" placeholder="Your email address...">
+                                        <button type="submit" class="subscribe-btn subscribe-btn-1">Subscribe</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- subscribe area end -->
+
+                <!-- product modal area start(click vào san pham) -->
+                <div class="product__modal-area modal fade" id="productModal" tabindex="-1" role="dialog"
+                    aria-labelledby="productModal" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="product__modal-inner position-relative">
+                                <div class="product__modal-close">
+                                    <button data-bs-dismiss="modal" aria-label="Close">
+                                        <i class="ti-close"></i>
+                                    </button>
+                                </div>
+                                <div class="product__modal-left">
+                                    <div class="tab-content mb-10" id="productModalThumb">
+                                        <div class="tab-pane fade show active" id="pro-1" role="tabpanel"
+                                            aria-labelledby="pro-1-tab">
+                                            <div class="product__modal-thumb w-img">
+                                                <img src="" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product__modal-right">
+                                    <h3 class="product__modal-title">
+                                        <a href="javascript:void(0)"></a>
+                                    </h3>
+                                    <div class="product__modal-rating d-flex align-items-center">
+                                        <ul class="mr-10">
+                                            <li>
+                                                <a href="#"><i class="ti-star"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="ti-star"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="ti-star"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="ti-star"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="ti-star"></i></a>
+                                            </li>
+                                        </ul>
+                                        <!-- <div class="customer-review">
+                                <a href="#">(1 customer review)</a>
+                            </div> -->
+                                    </div>
+                                    <div class="product__modal-price mb-10">
+                                        <span class="price new-price"></span>
+                                    </div>
+                                    <div class="product__modal-available">
+                                        <p> Availability: <span></span> </p>
+                                    </div>
+                                    <div class="product__modal-des">
+                                        <p>Typi non habent claritatem insitam, est usus legentis in iis qui facit eorum
+                                            claritatem. Investigationes demonstraverunt lectores legere me lius quod
+                                            legunt saepius.…</p>
+                                    </div>
+                                    <div class="product__modal-quantity mb-15">
+                                        <h5>Quantity:</h5>
+                                        <form action="#">
+                                            <div class="pro-quan-area d-sm-flex align-items-center">
+                                                <div class="product-quantity mr-20 mb-25">
+                                                    <div class="cart-plus-minus p-relative"><input type="text"
+                                                            value="1" /></div>
+                                                </div>
+                                                <div class="product__modal-cart mb-25">
+                                                    <button class="product-modal-cart-btn" data-id="">Add to
+                                                        cart</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="product__modal-categories d-sm-flex align-items-center">
+                                        <span>Categories: </span><span class="title-category"></span>
+                                    </div>
+                                    <div class="product__modal-share d-sm-flex align-items-center">
+                                        <span>Share this product: </span>
+                                        <ul>
+                                            <li>
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- product modal area start -->
+
+            </main>
+            <!-- footer area start -->
+            <%- include("layouts/footer"); -%>
+                <!-- footer area end -->
+
+                <%- include("layouts/script"); -%>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $(".product-modal-cart-btn").click(function (e) {
+                                e.preventDefault();
+                                let totalMoney = $(".cartmini__total span").text().replace("$", "");
+                                totalMoney = Number(totalMoney);
+                                let product_id = $(this).attr("data-id");
+                                let stock = $(".product__modal-available span").text();
+                                stock = stock.replace(/[^0-9]/g, '');
+                                let name = $(".product__modal-title a").text();
+                                let price = $(".product__modal-price .price").text().replace("$", "");
+                                let image = $(".product__modal-thumb img").attr("src");
+                                let quantity = $(".product-quantity input").val();
+                                let cart = localStorage.getItem('cart');
+                                if (cart) {
+                                    cart = JSON.parse(cart);
+                                    let index = cart.findIndex(item => item.product_id == product_id);
+                                    if (index != -1) {
+                                        let s = Number(quantity) + Number(cart[index].quantity)
+                                        if (s > Number(stock)) {
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Oops...',
+                                                text: 'The number of stocks is not enough!',
+                                            })
+                                        }
+                                        else {
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Add To Cart Success!',
+                                                timer: 1500,
+                                            })
+                                            cart[index].quantity = s;
+                                            $(`#item-${cart[index].product_id} .cartmini__price`).text(`${s} × ${cart[index].price}`);
+                                            localStorage.setItem('cart', JSON.stringify(cart));
+                                            totalMoney += Number(quantity) * Number(price);
+                                            $(".cartmini__total span").text(`$${totalMoney}`)
+
+                                            let countProduct = $("#countProduct").text();
+                                            countProduct = Number(countProduct) + Number(quantity);
+                                            $("#countProduct").text(countProduct)
+
+                                        }
+                                    }
+                                    else {
+                                        if (Number(quantity) > Number(stock)) {
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Oops...',
+                                                text: 'The number of stocks is not enough!',
+                                            })
+                                        }
+                                        else {
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Add To Cart Success!',
+                                                timer: 1500,
+                                            })
+
+                                            cart.push({ product_id, name, price, quantity, image, stock });
+                                            localStorage.setItem('cart', JSON.stringify(cart));
+                                            addProductToCart(product_id, image, name, quantity, price, totalMoney)
+                                        }
+                                    }
+                                }
+                                else {
+                                    if (Number(quantity) > Number(stock)) {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'The number of stocks is not enough!',
+                                        })
+                                    }
+                                    else {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Add To Cart Success!',
+                                            timer: 1500,
+                                        })
+                                        $(".cartmini__list ul").html(""); // Xóa bỏ chữ danh sách trống
+                                        localStorage.setItem('cart', JSON.stringify([{ product_id, name, price, quantity, image, stock }]));
+                                        addProductToCart(product_id, image, name, quantity, price, totalMoney)
+                                    }
+                                }
+                            })
+                        })
+
+                        function addProductToCart(product_id, image, name, quantity, price, totalMoney) {
+                            let content = '' +
+                                `<li class="cartmini__item p-rel d-flex align-items-start" id="item-${product_id}">` +
+                                '                            <div class="cartmini__thumb mr-15">' +
+                                '                                <a href="javascript:void(0)">' +
+                                `                                    <img src="${image}" alt="">` +
+                                '                                </a>' +
+                                '                            </div>' +
+                                '                            <div class="cartmini__content">' +
+                                '                                <h3 class="cartmini__title">' +
+                                `                                    <a href="javascript:void(0)">${name}</a>` +
+                                '                                </h3>' +
+                                '                                <span class="cartmini__price">' +
+                                `                                    <span class="price">${quantity} × $${price}</span>` +
+                                '                                </span>' +
+                                '                            </div>' +
+                                `                            <a href="#" class="cartmini__remove" onclick="RemoveItemCart(\'${product_id}\')">` +
+                                '                                <i class="fa-light fa-x"></i>' +
+                                '                            </a>' +
+                                '                        </li>' +
+                                '';
+                            $(".cartmini__list ul").append(content);
+                            totalMoney += Number(quantity) * Number(price);
+                            $(".cartmini__total span").text(`$${totalMoney}`)
+                            let countProduct = $("#countProduct").text();
+                            countProduct = Number(countProduct) + Number(quantity);
+                            $("#countProduct").text(countProduct)
+
+                        }
+
+                        function btnShowProduct(id) {
+                            let img = $(`#${id} .product-thumb img`).attr('src');
+                            let name = $(`#${id} .product-content h4`).text();
+                            let stock = $(`#${id} #product-stock`).val();
+                            let price = $(`#${id} .pro-price span`).text();
+                            let nameCategory = $(`#${id} #nameCategory`).val()
+
+                            $(".product__modal-thumb img").attr('src', img);
+                            $(".product__modal-title a").text(name);
+                            $(".product__modal-price .price").text(price);
+                            $(".product-quantity input").val("1");
+                            let data = Number(stock) > 0 ? "In Stock" : "Out of stock";
+                            if (Number(stock) == 0) {
+                                $(".product__modal-available span").css("color", "red");
+                            }
+                            else {
+                                $(".product__modal-available span").css("color", "green")
+                            }
+                            $(".product__modal-available span").text(data + ` (${stock} left)`)
+                            $(".product__modal-categories .title-category").text(nameCategory)
+                            $(".product-modal-cart-btn").attr('data-id', id);
+
+                        }
+                    </script>
+    </body>
+
+</html>
